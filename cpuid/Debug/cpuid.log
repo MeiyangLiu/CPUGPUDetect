@@ -1,0 +1,14 @@
+﻿生成启动时间为 2018/6/12 23:59:47。
+     1>项目“E:\code\VS\cpuid\cpuid.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt InstructionSet.cpp
+         InstructionSet.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\code\VS\cpuid\Debug\cpuid.dll" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"E:\code\VS\cpuid\Debug\cpuid.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\code\VS\cpuid\Debug\cpuid.lib" /MACHINE:X86 /DLL Debug\InstructionSet.obj
+            正在创建库 E:\code\VS\cpuid\Debug\cpuid.lib 和对象 E:\code\VS\cpuid\Debug\cpuid.exp
+         cpuid.vcxproj -> E:\code\VS\cpuid\Debug\cpuid.dll
+     1>已完成生成项目“E:\code\VS\cpuid\cpuid.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.76
