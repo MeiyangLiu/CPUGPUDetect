@@ -325,44 +325,19 @@ extern "C"
 		char *charJson = (char*)deviceJson.c_str();
 		return charJson;
 	}
-	/*__declspec(dllexport) bool __cdecl _QueryDevices()
+	__declspec(dllexport) char* __cdecl _GetDevicesJsonDirty()
 	{
 		AMDOpenCLDeviceDetection amd;
-		return amd.QueryDevices();
-	}*/
+		static string deviceJson;
+		if (amd.QueryDevices()) {
+			deviceJson = amd.GetDevicesJsonDirty();
+		}
+		char *charJson = (char*)deviceJson.c_str();
+		return charJson;
+	}
 
 	
 }
-
-char* AMDOpenCLDeviceDetection::test()	 {
-
-	AMDOpenCLDeviceDetection amd;
-	//const char* p = amd.GetDevicesJsonDirty().data();
-	string deviceJson = amd.GetDevicesJson();
-	cout << amd.GetDevicesJson();
-	return (char*)deviceJson.data();
-}
-
-int main(int argc, char* argv[]) {
-	//AMDOpenCLDeviceDetection AMDOpenCLDeviceDetection;
-	//if (AMDOpenCLDeviceDetection.QueryDevices()) {
-	//	string ss = AMDOpenCLDeviceDetection.GetDevicesJson();
-	//	cout << ss;
-	//	char *pp = (char*)ss.c_str();
-	//	cout << pp;// AMDOpenCLDeviceDetection.GetDevicesJson().c_str();
-
-	//}
-	AMDOpenCLDeviceDetection amd;
-	string deviceJson;
-	if (amd.QueryDevices()) {
-		//const char* p = amd.GetDevicesJsonDirty().data();
-		deviceJson = amd.GetDevicesJson();
-	}
-	char *charJson = (char*)deviceJson.c_str();
-	cout << charJson;
-	return 0;
-}
-
 
 BOOL WINAPI DllMain(
 	HINSTANCE hinstDLL,  // handle to DLL module
