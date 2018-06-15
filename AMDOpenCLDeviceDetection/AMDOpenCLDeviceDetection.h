@@ -30,7 +30,6 @@ public:
 	void PrintDevicesJsonDirty();
 	std::string GetDevicesJson();
 	std::string GetDevicesJsonDirty();
-	char* test();
 	//__declspec(dllexport) char*  _GetDevicesJsonDirty();
 
 private:
