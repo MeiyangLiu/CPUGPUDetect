@@ -107,15 +107,6 @@ void CudaDetection::PrintDevicesJson() {
 	cout << endl << "]" << endl;
 }
 
-//void CudaDetection::print(CudaDevice &dev) {
-//	cout << "DeviceID : " << dev.DeviceID << endl;
-//	cout << "DeviceName : " << dev.DeviceName << endl;
-//	cout << "SMVersionString : " << dev.SMVersionString << endl;
-//	cout << "UUID : " << dev.UUID << endl;
-//	cout << "DeviceGlobalMemory : " << dev.DeviceGlobalMemory << endl;
-//	cout << "pciDeviceId : " << dev.pciDeviceId << endl;
-//	cout << "pciSubSystemId : " << dev.pciSubSystemId << endl << endl;
-//}
 
 void CudaDetection::json_print(CudaDevice &dev) {
 	cout << "\t{" << endl;
@@ -146,15 +137,6 @@ void CudaDetection::PrintDevicesJson_d() {
 	cout << "]" << endl;
 }
 
-//void CudaDetection::print_d(CudaDevice &dev) {
-//    cout << "DeviceID : " << dev.DeviceID ;
-//    cout << "DeviceName : " << dev.DeviceName ;
-//    cout << "SMVersionString : " << dev.SMVersionString ;
-//    cout << "UUID : " << dev.UUID ;
-//    cout << "DeviceGlobalMemory : " << dev.DeviceGlobalMemory ;
-//    cout << "pciDeviceId : " << dev.pciDeviceId ;
-//    cout << "pciSubSystemId : " << dev.pciSubSystemId  ;
-//}
 
 void CudaDetection::json_print_d(CudaDevice &dev) {
 	cout << "{";
@@ -196,22 +178,6 @@ std::string CudaDetection::GetDevicesJson() {
 std::string  CudaDetection::json_makeup(CudaDevice &dev) {
 	string cudaJson;
 
-	//cout << "\t{" << endl;
-	//cout << "\t\t\"DeviceID\" : " << dev.DeviceID << "," << endl; // num
-	//cout << "\t\t\"pciBusID\" : " << dev.pciBusID << "," << endl; // num
-	//cout << "\t\t\"VendorID\" : " << dev.VendorID << "," << endl; // num
-	//cout << "\t\t\"VendorName\" : \"" << dev.VendorName << "\"," << endl; // string
-	//cout << "\t\t\"DeviceName\" : \"" << dev.DeviceName << "\"," << endl; // string
-	//cout << "\t\t\"SMVersionString\" : \"" << dev.SMVersionString << "\"," << endl;  // string
-	//cout << "\t\t\"SM_major\" : " << dev.SM_major << "," << endl; // num
-	//cout << "\t\t\"SM_minor\" : " << dev.SM_minor << "," << endl; // num
-	//cout << "\t\t\"UUID\" : \"" << dev.UUID << "\"," << endl;  // string
-	//cout << "\t\t\"DeviceGlobalMemory\" : " << dev.DeviceGlobalMemory << "," << endl; // num
-	//cout << "\t\t\"pciDeviceId\" : " << dev.pciDeviceId << "," << endl; // num
-	//cout << "\t\t\"pciSubSystemId\" : " << dev.pciSubSystemId << "," << endl; // num
-	//cout << "\t\t\"SMX\" : " << dev.SMX << endl; // num
-	//cout << "\t}";
-	//
 	cudaJson += "\t{\n";
 	cudaJson += "\t\t\"DeviceID\" : " + to_string(dev.DeviceID) + ",\n"; // num
 	cudaJson += "\t\t\"pciBusID\" : " + to_string(dev.pciBusID) + "," + "\n"; // num
@@ -275,23 +241,18 @@ extern "C"
 		CudaDetection cuda;
 		return cuda.QueryDevices();
 	}
-	__declspec(dllexport) char* __cdecl _GetDevicesJson()
+	__declspec(dllexport) char* __cdecl _GetDevicesJson_d()
 	{
 		CudaDetection cuda;
 		static string deviceJson;
 		if (cuda.QueryDevices()) {
 			//const char* p = amd.GetDevicesJsonDirty().data();
-			deviceJson = cuda.GetDevicesJson();
+			deviceJson = cuda.GetDevicesJson_d();
 		}
 		char *charJson = (char*)deviceJson.c_str();
 		return charJson;
 	}
-	/*__declspec(dllexport) bool __cdecl _QueryDevices()
-	{
-	AMDOpenCLDeviceDetection amd;
-	return amd.QueryDevices();
-	}*/
-
+	
 
 }
 
@@ -324,15 +285,15 @@ BOOL WINAPI DllMain(
 	return TRUE;  // Successful DLL_PROCESS_ATTACH.
 }
 
-int main(int argc, char* argv[]) {
-
-	CudaDetection amd;
-	string deviceJson;
-	if (amd.QueryDevices()) {
-		//const char* p = amd.GetDevicesJsonDirty().data();
-		deviceJson = amd.GetDevicesJson();
-	}
-	char *charJson = (char*)deviceJson.c_str();
-	cout << charJson;
-	return 0;
-}
+//int main(int argc, char* argv[]) {
+//
+//	CudaDetection amd;
+//	string deviceJson;
+//	if (amd.QueryDevices()) {
+//		//const char* p = amd.GetDevicesJsonDirty().data();
+//		deviceJson = amd.GetDevicesJson();
+//	}
+//	char *charJson = (char*)deviceJson.c_str();
+//	cout << charJson;
+//	return 0;
+//}

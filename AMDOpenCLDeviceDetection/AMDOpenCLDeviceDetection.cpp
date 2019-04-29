@@ -301,6 +301,48 @@ string AMDOpenCLDeviceDetection::GetDevicesJsonDirty() {
 	return  devicesJson;
 }
 
+
+//string AMDOpenCLDeviceDetection::GetDevicesJsonDirty() {
+//	string devicesJson;
+//	//cout << "[";
+//	devicesJson += "[";
+//	{
+//		int devPlatformsComma = _devicesPlatformsDevices.size();
+//		for (const auto &jsonLog : _devicesPlatformsDevices) {
+//			
+//			devicesJson += "{";
+//			devicesJson += "\"PlatformName\": \"" + jsonLog.PlatformName + "\"" + ",";
+//			devicesJson += "\"PlatformNum\": " + to_string(jsonLog.PlatformNum) + ",";
+//			devicesJson += "\"Devices\" : [";
+//
+//			// device print
+//			int devComma = jsonLog.Devices.size();
+//			for (const auto &dev : jsonLog.Devices) {
+//				
+//				devicesJson += "{";
+//				devicesJson += "\"DeviceID\" : " + to_string(dev.DeviceID) + ","; // num
+//				devicesJson += "\"AMD_BUS_ID\" : " + to_string(dev.AMD_BUS_ID) + ","; // num
+//				devicesJson += "\"_CL_DEVICE_NAME\" : \"" + dev._CL_DEVICE_NAME + "\",";
+//				devicesJson += "\"_CL_DEVICE_TYPE\" : \"" + dev._CL_DEVICE_TYPE + "\",";
+//				devicesJson += "\"_CL_DEVICE_GLOBAL_MEM_SIZE\" : " + to_string(dev._CL_DEVICE_GLOBAL_MEM_SIZE) + ","; // num
+//				devicesJson += "\"_CL_DEVICE_VENDOR\" : \"" + dev._CL_DEVICE_VENDOR + "\",";
+//				devicesJson += "\"_CL_DEVICE_VERSION\" : \"" + dev._CL_DEVICE_VERSION + "\",";
+//				devicesJson += "\"_CL_DRIVER_VERSION\" : \"" + dev._CL_DRIVER_VERSION + "\"";
+//				devicesJson += "}";
+//				devicesJson += COMMA(devComma);
+//				
+//			}
+//			devicesJson += "]";
+//			devicesJson += "}";
+//			devicesJson += COMMA(devPlatformsComma);
+//			
+//		}
+//	}
+//
+//	devicesJson += "]";
+//	return  devicesJson;
+//}
+
 extern "C"
 {
 	__declspec(dllexport) bool  _QueryDevices()
